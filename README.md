@@ -1,78 +1,91 @@
 # startup-lowdown
 
-An [Agent Skill](https://agentskills.io) that researches a startup for anyone considering a job there, from a recruiter's first message to an offer in hand. It produces a cited report: funding, leadership, growth, employee sentiment, red flags, questions to ask, and backchannel candidates.
+Thinking about a job at a startup? Ask your AI agent, and get back a cited report on the company: funding and runway, leadership, growth, what employees say, red flags, what to ask, and whom to ask for a backchannel.
 
-## Report
-
-Every claim links to its source.
-
-- **Bottom line**: whether an investor who could back only this company would, and what to find out next.
-- **The company**: product, customers, history.
-- **Flags**: red, yellow, and green, each explained.
-- **Money and prospects**: rounds, investors, revenue signals, estimated runway.
-- **People and growth**: headcount trend, layoffs, open roles, locations.
-- **Leadership**: founders' track records, executive turnover.
-- **Product and technology**: what works, what doesn't, engineering quality.
-- **Timeline and records**: recent events; court, labor, and layoff-notice checks.
-- **What employees say**: recurring themes from reviews and forums.
-- **What to ask**: the five most consequential questions, marked friendly or direct.
-- **Backchannel**: whom to ask, why, and what to ask, with a draft message.
-
-## Install
-
-Requires an agent with web search and page fetching. Script execution and a browser are optional.
-
-Any agent that supports skills:
+## Quickstart
 
 ```sh
-npx skills add ConfabulousDev/startup-lowdown
-# or
-gh skill install ConfabulousDev/startup-lowdown startup-lowdown
+npx skills add ConfabulousDev/startup-lowdown -g
 ```
 
-As a plugin or extension:
+Pick your agents when asked (Claude Code, Codex, Cursor, and dozens more). Then, in any folder, ask:
 
-| Agent | Command |
+> Acme (acme.com) wants me to join their engineering team. What am I getting into?
+
+In 10–20 minutes you get `startup-lowdown/acme/report.md`. A run makes a few hundred searches and page fetches, so expect it to use a real share of your plan's limits.
+
+## Install as a plugin
+
+Plugins update with the repository.
+
+**Claude Code** (terminal, and the Code tab in the Claude desktop app):
+
+```sh
+claude plugin marketplace add ConfabulousDev/startup-lowdown
+claude plugin install startup-lowdown@confabulous-dev
+```
+
+**Claude desktop app** (chat and Cowork): **Customize → Plugins → Add marketplace**, enter `ConfabulousDev/startup-lowdown`, then **Install**. Turn on **Settings → Capabilities → Code execution and file creation**.
+
+**Codex** (terminal and the Codex app):
+
+```sh
+codex plugin marketplace add ConfabulousDev/startup-lowdown
+codex plugin add startup-lowdown@confabulous-dev
+```
+
+Start a new session or chat afterwards.
+
+<details>
+<summary>Other agents and apps</summary>
+
+| Agent | Install |
 |---|---|
-| Claude Code | `/plugin marketplace add ConfabulousDev/startup-lowdown`, then `/plugin install startup-lowdown@confabulous-dev` |
-| Codex, ChatGPT desktop | `codex plugin marketplace add ConfabulousDev/startup-lowdown`, then install from `/plugins` |
 | GitHub Copilot CLI | `copilot plugin install ConfabulousDev/startup-lowdown` |
 | VS Code | **Chat: Install Plugin From Source** → `https://github.com/ConfabulousDev/startup-lowdown` |
 | Cursor | **Customize → From GitHub Repository** → the repository URL |
 | Gemini CLI | `gemini extensions install https://github.com/ConfabulousDev/startup-lowdown` |
 | Hermes Agent | `hermes skills install ConfabulousDev/startup-lowdown/skills/startup-lowdown` |
 | OpenClaw | `openclaw plugins install git:ConfabulousDev/startup-lowdown` |
+| GitHub CLI | `gh skill install ConfabulousDev/startup-lowdown startup-lowdown` |
 
-As an upload, from the [latest release](https://github.com/ConfabulousDev/startup-lowdown/releases/latest):
+Apps that take an upload, from the [latest release](https://github.com/ConfabulousDev/startup-lowdown/releases/latest):
 
 | App | File |
 |---|---|
-| Claude (web, desktop, mobile), ChatGPT, Manus | `startup-lowdown.zip`. Claude requires code execution to be on. |
+| Claude (web, mobile), ChatGPT, Manus | `startup-lowdown.zip`. Claude requires code execution to be on. |
 | Microsoft 365 Copilot, Perplexity | `startup-lowdown-flat.zip` |
 
-Other agents: copy `skills/startup-lowdown/` into the agent's skills folder, such as `~/.agents/skills/`.
+Anything else: copy `skills/startup-lowdown/` into the agent's skills folder, such as `~/.agents/skills/`.
+
+</details>
 
 ## Use
 
-Ask in your own words:
+Ask in your own words, with the company and its website:
 
 - "A recruiter from Acme (acme.com) reached out about a sales role. Is it worth a call?"
 - "I have an offer from Acme to join the engineering team. What would I be getting into?"
 
-Provide the company and its website. Your area (engineering, sales, …) is optional; it shifts emphasis, not scope. The report is written to `startup-lowdown/<company>/report.md` in the working folder.
+Your area (engineering, sales, …) is optional; it shifts emphasis, not scope. Your agent needs web search and page fetching. Python 3 is optional: the skill runs two small standard-library scripts when it can, and works without them.
 
-## Browser (optional)
+## The report
 
-Sites behind a login (LinkedIn, Glassdoor, Crunchbase, paid news) need a browser tool connected to your agent, such as [Playwright MCP](https://github.com/microsoft/playwright-mcp) with its browser extension. Before research starts, the skill asks:
+Every claim links to its source.
 
-1. whether to use the browser;
-2. which sites to include;
-3. whether it may open LinkedIn profiles (LinkedIn notifies the people viewed);
-4. that you sign in to those sites.
+- **Bottom line**: would an investor who could back only this company do it, and what to find out next.
+- **Flags**: red, yellow, and green, each explained.
+- **Money, people, leadership, product**: rounds and runway, headcount and layoffs, founders' track records, what works.
+- **Timeline and records**: recent events; court, labor, and layoff-notice checks.
+- **What employees say**: recurring themes from reviews and forums.
+- **What to ask**: the five most consequential questions, marked friendly or direct.
+- **Backchannel**: whom to ask, why, and what to ask, with a draft message.
 
-After that, the run is unattended.
+## Better with a browser (optional)
 
-The agent is instructed to read only and to stay on the sites you picked. Nothing enforces this: a browser tool can reach every site its browser profile is signed into. Use a profile signed into research sites only.
+LinkedIn, Glassdoor, Crunchbase, and paid news need you signed in. If your agent has a browser tool (Claude in Chrome, the Claude desktop app's browser, [Playwright MCP](https://github.com/microsoft/playwright-mcp), …), the skill asks up front whether to use it, which sites to include, and whether it may open LinkedIn profiles (LinkedIn notifies the people viewed). Sign in when asked; after that the run is unattended.
+
+The agent is told to read only and stay on the sites you picked, but nothing enforces this: a browser tool can reach every site its profile is signed into. Use a profile signed into research sites only.
 
 ## Responsible use
 
