@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ConfabulousDev/startup-lowdown/skills/startup-lowdown/assets/finding.schema.json",
+  "title": "Startup Lowdown module findings",
+  "description": "One file per research module, written to workspace/<company-slug>/findings/<module>.json. See references/evidence-rules.md for how to fill each field.",
+  "type": "object",
+  "required": ["module", "company", "generated_at", "coverage", "findings"],
+  "additionalProperties": false,
+  "properties": {
+    "module": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Module id, matching the reference file name without .md."
+    },
+    "company": {
+      "type": "object",
+      "required": ["name", "domain"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "domain": {"type": "string", "minLength": 3}
+      }
+    },
+    "generated_at": {"type": "string", "format": "date"},
+    "coverage": {
+      "type": "array",
+      "description": "Every source the module tried or meant to try, including failures. Missing data is not good news; record it here.",
+      "items": {
+        "type": "object",
+        "required": ["source", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "source": {"type": "string", "minLength": 1},
+          "status": {"enum": ["ok", "partial", "blocked", "not_found", "skipped"]},
+          "note": {"type": "string"}
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/finding"}
+    },
+    "open_questions": {
+      "type": "array",
+      "description": "Questions the user should ask in interviews or backchannels because public data could not answer them.",
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "required": ["id", "topic", "claim", "as_of", "evidence", "confidence", "polarity", "sources"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+:[0-9]{3}$",
+          "description": "<module>:<NNN>, unique within the company workspace."
+        },
+        "topic": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$",
+          "description": "Short machine key, e.g. last_round, headcount_trend, ceo_departure."
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 1,
+          "description": "One sentence, attributed where the evidence class requires it."
+        },
+        "value": {
+          "description": "Optional structured value (number, string, object) for claims the synthesis may compute with."
+        },
+        "as_of": {
+          "type": "string",
+          "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$",
+          "description": "When the claim was true or reported: YYYY, YYYY-MM, or YYYY-MM-DD."
+        },
+        "evidence": {"enum": ["fact", "reported", "claimed", "inferred"]},
+        "confidence": {"enum": ["high", "medium", "low"]},
+        "polarity": {"enum": ["positive", "neutral", "negative"]},
+        "sources": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/source"}
+        },
+        "derived_from": {
+          "type": "array",
+          "description": "Finding ids an inferred claim is built on.",
+          "items": {"type": "string", "pattern": "^[a-z0-9-]+:[0-9]{3}$"}
+        },
+        "reasoning": {
+          "type": "string",
+          "description": "How an inferred claim was derived, including assumptions."
+        },
+        "people": {
+          "type": "array",
+          "description": "Names of real people the claim is about.",
+          "items": {"type": "string", "minLength": 1}
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"evidence": {"enum": ["fact", "reported", "claimed"]}}},
+          "then": {"properties": {"sources": {"minItems": 1}}}
+        },
+        {
+          "if": {"properties": {"evidence": {"const": "inferred"}}},
+          "then": {"required": ["derived_from", "reasoning"]}
+        },
+        {
+          "description": "Negative claims about named people must rest on sources, never on inference.",
+          "if": {
+            "required": ["people"],
+            "properties": {
+              "polarity": {"const": "negative"},
+              "people": {"minItems": 1}
+            }
+          },
+          "then": {"properties": {"evidence": {"enum": ["fact", "reported", "claimed"]}}}
+        }
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": ["url", "accessed"],
+      "additionalProperties": false,
+      "properties": {
+        "url": {"type": "string", "minLength": 1},
+        "title": {"type": "string"},
+        "publisher": {"type": "string"},
+        "published": {
+          "type": "string",
+          "pattern": "^[0-9]{4}(-[0-9]{2}(-[0-9]{2})?)?$"
+        },
+        "accessed": {"type": "string", "format": "date"},
+        "quote": {
+          "type": "string",
+          "maxLength": 300,
+          "description": "Short supporting excerpt. Keep quotes brief."
+        }
+      }
+    }
+  }
+}

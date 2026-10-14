@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "startup-lowdown",
+  "version": "0.7.0",
+  "description": "Researches a startup for anyone weighing a job there, from a recruiter's first message to an offer in hand: funding, people, product, sentiment, red flags, questions to ask, and backchannel candidates.",
+  "author": {
+    "name": "Confabulous Software LLC"
+  },
+  "homepage": "https://github.com/ConfabulousDev/startup-lowdown",
+  "repository": "https://github.com/ConfabulousDev/startup-lowdown",
+  "license": "MIT",
+  "keywords": [
+    "startups",
+    "job-search",
+    "due-diligence",
+    "careers",
+    "research"
+  ]
+}

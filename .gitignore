@@ -1,0 +1,5 @@
+.DS_Store
+__pycache__/
+*.pyc
+# The skill's output when run from this folder
+/startup-lowdown/

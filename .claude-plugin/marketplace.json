@@ -1,0 +1,14 @@
+{
+  "name": "confabulous-dev",
+  "description": "Agent skills from Confabulous Software LLC",
+  "owner": {
+    "name": "Confabulous Software LLC"
+  },
+  "plugins": [
+    {
+      "name": "startup-lowdown",
+      "source": "./",
+      "description": "Researches a startup for anyone weighing a job there, from a recruiter's first message to an offer in hand: funding, people, product, sentiment, red flags, questions to ask, and backchannel candidates."
+    }
+  ]
+}

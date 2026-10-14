@@ -1,0 +1,41 @@
+name: Release
+
+# Runs when a v* tag is pushed, including the tag `gh release create` makes.
+# Attaches both skill zips to that tag's release, creating the release if needed.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Tag matches the skill version
+        run: |
+          version=$(sed -n 's/^  version: "\(.*\)"$/\1/p' skills/startup-lowdown/SKILL.md)
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::tag $GITHUB_REF_NAME does not match SKILL.md version $version"; exit 1
+          fi
+          python3 .github/check_manifests.py
+
+      - name: Build the skill zips
+        run: |
+          # Folder at the top (Claude.ai, ChatGPT, Manus).
+          (cd skills && zip -rq ../startup-lowdown.zip startup-lowdown -x '*/__pycache__/*' '*.DS_Store')
+          # SKILL.md at the top (Microsoft 365 Copilot, Perplexity).
+          (cd skills/startup-lowdown && zip -rq ../../startup-lowdown-flat.zip . -x '*/__pycache__/*' '*.DS_Store')
+
+      - name: Attach the zips to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" > /dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" startup-lowdown.zip startup-lowdown-flat.zip --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" startup-lowdown.zip startup-lowdown-flat.zip --title "$GITHUB_REF_NAME" --generate-notes
+          fi
