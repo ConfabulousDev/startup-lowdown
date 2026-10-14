@@ -19,7 +19,7 @@ jobs:
             if [ -e "$path" ]; then echo "::error::$path/ must not be in this repository"; exit 1; fi
           done
 
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v10.2.0
 
       - name: Skill matches the Agent Skills spec
         run: uvx --from skills-ref==0.1.1 agentskills validate skills/startup-lowdown
