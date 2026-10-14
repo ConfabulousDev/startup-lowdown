@@ -14,6 +14,18 @@ Pick your agents when asked (Claude Code, Codex, Cursor, and dozens more). Then,
 
 In 10–20 minutes you get `startup-lowdown/acme/report.md`. A run makes a few hundred searches and page fetches, so expect it to use a real share of your plan's limits.
 
+## The report
+
+Every claim links to its source.
+
+- **Bottom line**: would an investor who could back only this company do it, and what to find out next.
+- **Flags**: red, yellow, and green, each explained.
+- **Money, people, leadership, product**: rounds and runway, headcount and layoffs, founders' track records, what works.
+- **Timeline and records**: recent events; court, labor, and layoff-notice checks.
+- **What employees say**: recurring themes from reviews and forums.
+- **What to ask**: the five most consequential questions, marked friendly or direct.
+- **Backchannel**: whom to ask, why, and what to ask, with a draft message.
+
 ## Install as a plugin
 
 Plugins update with the repository.
@@ -68,18 +80,6 @@ Ask in your own words, with the company and its website:
 - "I have an offer from Acme to join the engineering team. What would I be getting into?"
 
 Your area (engineering, sales, …) is optional; it shifts emphasis, not scope. Your agent needs web search and page fetching. Python 3 is optional: the skill runs two small standard-library scripts when it can, and works without them.
-
-## The report
-
-Every claim links to its source.
-
-- **Bottom line**: would an investor who could back only this company do it, and what to find out next.
-- **Flags**: red, yellow, and green, each explained.
-- **Money, people, leadership, product**: rounds and runway, headcount and layoffs, founders' track records, what works.
-- **Timeline and records**: recent events; court, labor, and layoff-notice checks.
-- **What employees say**: recurring themes from reviews and forums.
-- **What to ask**: the five most consequential questions, marked friendly or direct.
-- **Backchannel**: whom to ask, why, and what to ask, with a draft message.
 
 ## Better with a browser (optional)
 
