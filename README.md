@@ -12,7 +12,7 @@ Pick your agents when asked (Claude Code, Codex, Cursor, and dozens more). Then,
 
 > Acme (acme.com) wants me to join their engineering team. What am I getting into?
 
-In 10–20 minutes you get `startup-lowdown/acme/report.md`. A run makes a few hundred searches and page fetches, so expect it to use a real share of your plan's limits.
+In 10–15 minutes you get `startup-lowdown/acme/report.md`. A run makes 100–200 web searches and page fetches, so expect it to use a real share of your plan's limits.
 
 ## The report
 
@@ -27,8 +27,6 @@ Every claim links to its source.
 - **Backchannel**: whom to ask, why, and what to ask, with a draft message.
 
 ## Install as a plugin
-
-Plugins update with the repository.
 
 **Claude Code** (terminal, and the Code tab in the Claude desktop app):
 
@@ -90,7 +88,7 @@ The agent is told to read only and stay on the sites you picked, but nothing enf
 ## Responsible use
 
 - Follow the terms of the sites you research.
-- Reports name only founders, executives, board members, investors, and team leaders, using professional information. They never include contact details.
+- Reports name only founders, executives, board members, investors, team leaders, and suggested backchannel contacts, using professional information. They never include contact details.
 - Reports can be wrong or out of date. Verify before you rely on or share one.
 
 ## Disclaimer

@@ -32,7 +32,7 @@ Prefer primary records, then business press, then aggregators that cite sources,
 
 ## People
 
-- **In scope:** founders, executives, board members, investors, and leaders of the user's area, using professional information only.
+- **In scope:** founders, executives, board members, investors, leaders of the user's area, and backchannel candidates, using professional information only.
 - **Never record:** personal contact details; family, health, religion, ethnicity, sexuality, or politics; age or demographics for anyone but founders.
 - **Negative claims about a named person** need a cited source, never inference (the schema enforces this). Do not guess at anyone's location, employment status, or motives.
 - **Backchannel candidates:** who and why ("left in 2025 after 3 years on the platform team"), never contact details. Outreach is a draft the user sends personally.

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/ConfabulousDev/startup-lowdown/skills/startup-lowdown/assets/finding.schema.json",
   "title": "Startup Lowdown module findings",
-  "description": "One file per research module, written to workspace/<company-slug>/findings/<module>.json. See references/evidence-rules.md for how to fill each field.",
+  "description": "One file per research module, written to startup-lowdown/<company-slug>/findings/<module>.json. See references/evidence-rules.md for how to fill each field.",
   "type": "object",
   "required": ["module", "company", "generated_at", "coverage", "findings"],
   "additionalProperties": false,
