@@ -39,14 +39,14 @@ claude plugin install startup-lowdown@confabulous-dev
 
 **Claude desktop app** (chat and Cowork): **Customize → Plugins → Add marketplace**, enter `ConfabulousDev/startup-lowdown`, then **Install**. Turn on **Settings → Capabilities → Code execution and file creation**.
 
-**Codex** (terminal and the Codex app):
+**Codex** (terminal and the ChatGPT desktop app):
 
 ```sh
 codex plugin marketplace add ConfabulousDev/startup-lowdown
 codex plugin add startup-lowdown@confabulous-dev
 ```
 
-Start a new session or chat afterwards.
+Then start a new Codex session, or restart the ChatGPT desktop app.
 
 <details>
 <summary>Other agents and apps</summary>
