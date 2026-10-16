@@ -18,7 +18,7 @@ In 10–15 minutes you get `startup-lowdown/acme/report.md`. A run makes 100–2
 
 Every claim links to its source.
 
-- **Bottom line**: would an investor who could back only this company do it, and what to find out next.
+- **Bottom line**: the overall read, what matters most, and what to find out next.
 - **Flags**: red, yellow, and green, each explained.
 - **Money, people, leadership, product**: rounds and runway, headcount and layoffs, founders' track records, what works.
 - **Timeline and records**: recent events; court, labor, and layoff-notice checks.
@@ -81,7 +81,7 @@ Your area (engineering, sales, …) is optional; it shifts emphasis, not scope. 
 
 ## Better with a browser (optional)
 
-LinkedIn, Glassdoor, Crunchbase, and paid news need you signed in. If your agent has a browser tool (Claude in Chrome, the Claude desktop app's browser, [Playwright MCP](https://github.com/microsoft/playwright-mcp), …), the skill asks up front whether to use it, which sites to include, and whether it may open LinkedIn profiles (LinkedIn notifies the people viewed). Sign in when asked; after that the run is unattended.
+Browser access is opt-in. Without it, the research still runs in full on public sources; it just can't open sites like LinkedIn, Glassdoor, Crunchbase, and paid news, which open fully only in your own browser. If your agent has a browser tool (Claude in Chrome, the Claude desktop app's browser, [Playwright MCP](https://github.com/microsoft/playwright-mcp), …), the skill asks up front whether to use it, which sites to include, and whether it may open LinkedIn profiles (LinkedIn notifies the people viewed). Signing in to those sites is optional too, but signed-in visits see more and are challenged less. After setup the run is unattended.
 
 The agent is told to read only and stay on the sites you picked, but nothing enforces this: a browser tool can reach every site its profile is signed into. Use a profile signed into research sites only.
 

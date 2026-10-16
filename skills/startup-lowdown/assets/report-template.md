@@ -1,10 +1,10 @@
 # {Company} ({domain}): what you're getting into
 
-Researched {date}{, for someone joining the {area} team}. How solid this research is: {high, medium, or low, and the main reason in one clause}. Verify anything you rely on.
+Researched {date}{, for someone joining the {area} team}. Verify anything you rely on.
 
 ## Bottom line
 
-{3–5 sentences: would an investor who can back only this one company do it, what matters most, and what to find out next.}
+{3–5 sentences: the overall read, what matters most, and what to find out next.}
 
 ## The company
 
@@ -65,4 +65,4 @@ Numbered URLs.
 
 ## Addendum: coverage
 
-What was checked, what was blocked or unavailable, and what that means for confidence.
+What was checked, what was blocked or unavailable, and what that leaves unverified.

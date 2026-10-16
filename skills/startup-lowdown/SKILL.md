@@ -10,7 +10,7 @@ metadata:
 
 # Startup Lowdown
 
-Give the user an outside, holistic read on a company they might work for, whether a recruiter just reached out or an offer is in hand, the way an investor who can back only one company would: its real situation and prospects, the risks, what to ask and check, and whom to ask for a backchannel reference. The pitch is designed to persuade; find what it leaves out, without overstating bad news either.
+Give the user an outside, holistic read on a company they might work for, whether a recruiter just reached out or an offer is in hand: its real situation and prospects, the risks, what to ask and check, and whom to ask for a backchannel reference. The pitch is designed to persuade; find what it leaves out, without overstating bad news either.
 
 ## Before you start
 
@@ -21,7 +21,9 @@ Inputs:
 - **Company and website** (required). Ask for the website only if the name is ambiguous.
 - **Area** (optional): the function the user would join, such as engineering, product, or sales. It sets emphasis (that team's leaders, churn, and questions), not scope. Ignore titles and seniority; this is not a role-fit review.
 
-Some sources open only in the user's own browser, where they are logged in. If you have a browser tool, ask whether to use it. Each question in this setup needs an explicit answer: if one is skipped, dismissed, or unclear, ask it again; never take silence as yes or no, and start no research until setup is done. If yes, ask in one message which of these to include, and use only those:
+Browser access is optional, and off unless the user opts in. Without it, research runs on public search and page fetching: every module but `browser-sources` runs in full, and pages that need the browser are logged as `blocked`. With it, the run can also read sites that open fully only in the user's own browser, such as LinkedIn and Glassdoor.
+
+If you have a browser tool, ask whether to use it, and say in the question that it is optional and the research goes ahead without it. Each question in this setup needs an explicit answer: if one is skipped, dismissed, or unclear, ask it again; never take silence as yes or no, and start no research until setup is done. If no, skip the rest of this browser setup. If yes, ask in one message which of these to include, and use only those:
 
 - LinkedIn, and whether you may open people's profiles (LinkedIn shows them who viewed)
 - Glassdoor
@@ -33,9 +35,9 @@ Some sources open only in the user's own browser, where they are logged in. If y
 - Reddit, Indeed, or Wellfound
 - Any other site they name
 
-Then ask the user, in one message, to sign in to every picked site they have an account on, in that browser; signed-in visits are challenged less. Open each picked site once, ask them to clear any login page or human check still showing, and check again once they say they're done. From then on the run is unattended: never stop to ask again.
+Then ask the user, in one message, whether they want to sign in, in that browser, to any picked site they have an account on. Signing in is optional too: signed-in visits are challenged less and see more, and a site they don't sign in to is read as a visitor would see it. Open each picked site once, ask them to clear any human check still showing (and any login page, for sites they chose to sign in to), and check again once they say they're done. From then on the run is unattended: never stop to ask again.
 
-If you have no browser tool, say that these sources need one, and ask whether the user wants to connect a browser first or go ahead without it.
+If you have no browser tool, say that a few sources need one, that it is optional, and ask whether the user wants to connect a browser first or go ahead without it.
 
 Ask for nothing else. The report vets the company, not the job: leave out the user's pay, equity, offer terms, and day-to-day work, which are for their own conversations with the company.
 
